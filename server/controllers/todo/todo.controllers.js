@@ -1,5 +1,7 @@
 import Todo from "../../models/todo.js"
 
+
+//add todo
 export const addTodo = async (req, res) => {
     try {
         const { title } = req.body
@@ -16,6 +18,7 @@ export const addTodo = async (req, res) => {
         })
 
         await newTodo.save()
+        console.log("Saved Todo:", newTodo);
 
         res.status(200).json({
             success: true,
@@ -27,6 +30,25 @@ export const addTodo = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Server error",
+        });
+    }
+}
+
+//get all todo
+export const getAllTodo = async (req, res) => {
+    try {
+        const todos = await Todo.find().sort({ createdAt: -1 })
+
+        res.status(201).json({
+            success: true,
+            message: "Fetched all todos",
+            data: todos
+        })
+    } catch (error) {
+        console.log("Fetching Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch todos",
         });
     }
 }
