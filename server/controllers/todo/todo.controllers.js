@@ -16,7 +16,6 @@ export const addTodo = async (req, res) => {
         })
 
         await newTodo.save()
-        console.log("created");
 
         res.status(200).json({
             success: true,
