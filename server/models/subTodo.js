@@ -9,7 +9,8 @@ const subTodoSchema = new Schema({
         type: String,
     },
     markascomplete: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 

@@ -6,7 +6,8 @@ const todoSchema = new Schema({
         required: true,
     },
     markascomplete: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 
